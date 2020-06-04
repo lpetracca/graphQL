@@ -202,8 +202,8 @@ const RootMutationType = new GraphQLObjectType({
             type: new GraphQLList(CourseType),
             description: 'Delete a Course',
             args: {
-                id: { type: GraphQLInt }
-            },
+                id: { type: GraphQLNonNull(GraphQLInt) },              
+            },                
             resolve: (parents, args) => {
                 _.remove(courses, course => args.id === course.id)
                 return courses;
@@ -214,7 +214,7 @@ const RootMutationType = new GraphQLObjectType({
             type: new GraphQLList(StudentType),
             description: 'Delete a Student',
             args: {
-                id: { type: GraphQLInt }
+                id: { type: GraphQLNonNull(GraphQLInt) }
             },
             resolve: (parents, args) => {
                 _.remove(students, student => args.id === student.id)
@@ -226,7 +226,7 @@ const RootMutationType = new GraphQLObjectType({
             type: new GraphQLList(GradeType),
             description: 'Delete a Grade',
             args: {
-                id: { type: GraphQLInt }
+                id: { type: GraphQLNonNull(GraphQLInt) }
             },
             resolve: (parents, args) => {
                 _.remove(grades, grade => args.id === grade.id)
